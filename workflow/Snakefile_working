@@ -71,7 +71,7 @@ rule sort_narrowpeaks:
 		config['envs_dir']+"/abcenv.yml"
 	shell:
 		"""
-		bedtools sort -faidx {params.chrom_sizes} -i {input.narrowPeak} > {output.narrowPeakSorted}
+		grep -v "_" {input.narrowPeak} | bedtools sort -faidx {params.chrom_sizes} -i stdin > {output.narrowPeakSorted}
 		"""
 
 ## call candidate regions
