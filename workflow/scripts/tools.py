@@ -25,6 +25,8 @@ def run_piped_commands(piped_commands):
 
     # Iterate through the remaining commands and pipe them together
     for cmd in piped_commands[1:]:
+        if cmd == "":
+            continue
         current_process = Popen(
             cmd, stdin=current_process.stdout, stdout=PIPE, shell=True
         )
